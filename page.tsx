@@ -1,29 +1,35 @@
 import Navbar from '@/app/components/Navbar';
-import { Info, CheckCircle2 } from 'lucide-react';
+import { Library, Book } from 'lucide-react';
 
-export default function AboutPage() {
+export default function BooksPage() {
+  const books = [
+    { title: 'Tareekh-e-Farishta', author: 'Muhammad Qasim Farishta', era: '16th Century', desc: 'Comprehensive history of Islamic rule in India.' },
+    { title: 'Ain-i-Akbari', author: 'Abu'l-Fazl ibn Mubarak', era: 'Mughal Period', desc: 'Detailed document recording the administration of Emperor Akbar.' },
+    { title: 'Asar-us-Sanadid', author: 'Sir Syed Ahmed Khan', era: '1847', desc: 'Monumental work on the historical monuments and figures of Delhi.' },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <Navbar />
-      <main className="max-w-4xl mx-auto p-6 space-y-6">
+      <main className="max-w-6xl mx-auto p-6 space-y-6">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Info className="text-indigo-400" /> About HistoryVoice AI
+            <Library className="text-indigo-400" /> Authentic Book Library
           </h1>
-          <p className="text-sm text-slate-400">Project details and technical summary for evaluation.</p>
+          <p className="text-sm text-slate-400">Curated archive of historical literature & rare manuscripts.</p>
         </div>
 
-        <div className="p-6 bg-slate-900 border border-slate-800 rounded-2xl space-y-4 text-sm text-slate-300">
-          <p>
-            HistoryVoice AI is built as a complete digital historical platform. It empowers students and researchers to access rare literature, ask complex questions, and interact using AI voice technology.
-          </p>
-
-          <h3 className="font-semibold text-white text-base pt-2">Key Accomplishments</h3>
-          <ul className="space-y-2">
-            <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" /> Direct access without mandatory login flow.</li>
-            <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" /> Powered by Gemini 2.5 Flash for smart history responses.</li>
-            <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" /> Integrated web speech synthesis for voice reading functionality.</li>
-          </ul>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {books.map((b, i) => (
+            <div key={i} className="p-5 bg-slate-900 border border-slate-800 rounded-2xl space-y-3">
+              <div className="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg w-fit">
+                <Book className="w-5 h-5" />
+              </div>
+              <h3 className="font-semibold text-white">{b.title}</h3>
+              <p className="text-xs text-indigo-400">Author: {b.author} ({b.era})</p>
+              <p className="text-xs text-slate-400">{b.desc}</p>
+            </div>
+          ))}
         </div>
       </main>
     </div>
