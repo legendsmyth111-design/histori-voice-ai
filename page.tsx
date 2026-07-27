@@ -1,11 +1,13 @@
 import Navbar from '@/app/components/Navbar';
-import { Library, Book } from 'lucide-react';
+import { Compass, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-export default function BooksPage() {
-  const books = [
-    { title: 'Tareekh-e-Farishta', author: 'Muhammad Qasim Farishta', era: '16th Century', desc: 'Comprehensive history of Islamic rule in India.' },
-    { title: 'Ain-i-Akbari', author: 'Abu'l-Fazl ibn Mubarak', era: 'Mughal Period', desc: 'Detailed document recording the administration of Emperor Akbar.' },
-    { title: 'Asar-us-Sanadid', author: 'Sir Syed Ahmed Khan', era: '1847', desc: 'Monumental work on the historical monuments and figures of Delhi.' },
+export default function ExplorePage() {
+  const topics = [
+    { title: 'Indus Valley Civilization', desc: 'Explore Mohenjo-daro & Harappa urban planning and trade.', category: 'Ancient' },
+    { title: 'Mughal Empire Era', desc: 'Architecture, administration, and decline of Mughal rule.', category: 'Medieval' },
+    { title: 'Independence Movement 1947', desc: 'Key historical events leading to the creation of Pakistan.', category: 'Modern' },
+    { title: 'Subcontinent Literature & Manuscripts', desc: 'Authentic historical literature and rare manuscripts research.', category: 'Literature' },
   ];
 
   return (
@@ -14,20 +16,20 @@ export default function BooksPage() {
       <main className="max-w-6xl mx-auto p-6 space-y-6">
         <div>
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Library className="text-indigo-400" /> Authentic Book Library
+            <Compass className="text-indigo-400" /> Explore Historical Topics
           </h1>
-          <p className="text-sm text-slate-400">Curated archive of historical literature & rare manuscripts.</p>
+          <p className="text-sm text-slate-400">Browse key historical modules and research prompts.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {books.map((b, i) => (
-            <div key={i} className="p-5 bg-slate-900 border border-slate-800 rounded-2xl space-y-3">
-              <div className="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg w-fit">
-                <Book className="w-5 h-5" />
-              </div>
-              <h3 className="font-semibold text-white">{b.title}</h3>
-              <p className="text-xs text-indigo-400">Author: {b.author} ({b.era})</p>
-              <p className="text-xs text-slate-400">{b.desc}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {topics.map((t, index) => (
+            <div key={index} className="p-5 bg-slate-900 border border-slate-800 rounded-2xl hover:border-indigo-500 transition space-y-3">
+              <span className="text-xs px-2.5 py-1 bg-indigo-950 text-indigo-400 rounded-md font-mono">{t.category}</span>
+              <h3 className="font-semibold text-lg text-white">{t.title}</h3>
+              <p className="text-sm text-slate-400">{t.desc}</p>
+              <Link href="/" className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-400 hover:text-indigo-300">
+                Ask AI about this <ArrowRight className="w-3 h-3" />
+              </Link>
             </div>
           ))}
         </div>
